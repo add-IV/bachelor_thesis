@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} pandaRec/copybutton.py}
+\PYG{k+kn}{import} \PYG{n+nn}{ipywidgets} \PYG{k}{as} \PYG{n+nn}{widgets}
+
+\PYG{k}{def} \PYG{n+nf}{copy\PYGZus{}button\PYGZus{}html}\PYG{p}{(}\PYG{n}{copytext}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}\PYG{p}{):}
+	\PYG{n}{base\PYGZus{}html} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+s2}{	\PYGZlt{}button class=\PYGZdq{}copybutton\PYGZdq{} onclick=navigator.clipboard.writeText(\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}\PYGZcb{}}\PYG{l+s+s2}{\PYGZsq{})\PYGZgt{}}
+\PYG{l+s+s2}{		Copy}
+\PYG{l+s+s2}{	\PYGZlt{}/button\PYGZgt{}}
+\PYG{l+s+s2}{	\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+	\PYG{k}{return} \PYG{n}{base\PYGZus{}html}\PYG{o}{.}\PYG{n}{format}\PYG{p}{(}\PYG{n}{copytext}\PYG{p}{)}
+
+\end{Verbatim}

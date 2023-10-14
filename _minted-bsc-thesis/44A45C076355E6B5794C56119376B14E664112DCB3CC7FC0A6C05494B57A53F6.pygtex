@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} pandaRec/recipe.py}
+
+\PYG{n+nd}{@dataclass}
+\PYG{k}{class} \PYG{n+nc}{Recipe}\PYG{p}{:}
+	\PYG{n}{name}\PYG{p}{:} \PYG{n+nb}{str}
+	\PYG{n}{description}\PYG{p}{:} \PYG{n+nb}{str}
+	\PYG{n}{code}\PYG{p}{:} \PYG{n+nb}{str}
+	\PYG{n}{keywords}\PYG{p}{:} \PYG{n+nb}{str}
+\end{Verbatim}

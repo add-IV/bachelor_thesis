@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@dataclass}
+\PYG{k}{class} \PYG{n+nc}{Recipe}\PYG{p}{:}
+	\PYG{n+nb}{id}\PYG{p}{:} \PYG{n+nb}{int}
+	\PYG{n}{name}\PYG{p}{:} \PYG{n+nb}{str}
+	\PYG{n}{description}\PYG{p}{:} \PYG{n+nb}{str}
+	\PYG{n}{code}\PYG{p}{:} \PYG{n+nb}{str}
+	\PYG{n}{keywords}\PYG{p}{:} \PYG{n+nb}{str}
+\PYGZbs{}\PYG{n}{caption}\PYG{p}{\PYGZob{}}\PYG{n}{test}\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

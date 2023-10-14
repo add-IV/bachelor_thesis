@@ -1,0 +1,631 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{ynt/global//global/global}
+  \entry{recommendationsystems}{article}{}
+    \name{author}{3}{}{%
+      {{hash=RM}{%
+         family={Robillard},
+         familyi={R\bibinitperiod},
+         given={Martin},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=WR}{%
+         family={Walker},
+         familyi={W\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=ZT}{%
+         family={Zimmermann},
+         familyi={Z\bibinitperiod},
+         given={Thomas},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RMWRZT1}
+    \strng{fullhash}{RMWRZT1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \verb{doi}
+    \verb 10.1109/MS.2009.161
+    \endverb
+    \field{number}{4}
+    \field{pages}{80\bibrangedash 86}
+    \field{title}{Recommendation Systems for Software Engineering}
+    \field{volume}{27}
+    \field{journaltitle}{IEEE Software}
+    \field{annotation}{%
+    overview of recommendation systems%
+    }
+    \field{year}{2010}
+  \endentry
+
+  \entry{das2012indexing}{incollection}{}
+    \name{author}{2}{}{%
+      {{hash=DA}{%
+         family={Das},
+         familyi={D\bibinitperiod},
+         given={Abhishek},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=JA}{%
+         family={Jain},
+         familyi={J\bibinitperiod},
+         given={Ankit},
+         giveni={A\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IGI Global}%
+    }
+    \strng{namehash}{DAJA1}
+    \strng{fullhash}{DAJA1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{booktitle}{Next Generation Search Engines: Advanced Models for
+  Information Retrieval}
+    \field{pages}{1\bibrangedash 28}
+    \field{title}{Indexing the world wide web: The journey so far}
+    \field{annotation}{%
+    book section by google about how to implement search indexing, I used this
+  for my implementation%
+    }
+    \field{year}{2012}
+  \endentry
+
+  \entry{bast2016semantic}{article}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{3}{}{%
+      {{hash=BH}{%
+         family={Bast},
+         familyi={B\bibinitperiod},
+         given={Hannah},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=BB}{%
+         family={Buchhold},
+         familyi={B\bibinitperiod},
+         given={Bj{\"o}rn},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=HE}{%
+         family={Haussmann},
+         familyi={H\bibinitperiod},
+         given={Elmar},
+         giveni={E\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Now Publishers, Inc.}%
+    }
+    \strng{namehash}{BHBBHE+1}
+    \strng{fullhash}{BHBBHE+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{number}{2-3}
+    \field{pages}{119\bibrangedash 271}
+    \field{title}{Semantic search on text and knowledge bases}
+    \field{volume}{10}
+    \field{journaltitle}{Foundations and Trends{\textregistered} in Information
+  Retrieval}
+    \field{year}{2016}
+  \endentry
+
+  \entry{vaswani2017attention}{article}{}
+    \name{author}{8}{}{%
+      {{hash=VA}{%
+         family={Vaswani},
+         familyi={V\bibinitperiod},
+         given={Ashish},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=SN}{%
+         family={Shazeer},
+         familyi={S\bibinitperiod},
+         given={Noam},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=PN}{%
+         family={Parmar},
+         familyi={P\bibinitperiod},
+         given={Niki},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=UJ}{%
+         family={Uszkoreit},
+         familyi={U\bibinitperiod},
+         given={Jakob},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=JL}{%
+         family={Jones},
+         familyi={J\bibinitperiod},
+         given={Llion},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=GAN}{%
+         family={Gomez},
+         familyi={G\bibinitperiod},
+         given={Aidan\bibnamedelima N},
+         giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=KL}{%
+         family={Kaiser},
+         familyi={K\bibinitperiod},
+         given={{\L}ukasz},
+         giveni={{\L}\bibinitperiod},
+      }}%
+      {{hash=PI}{%
+         family={Polosukhin},
+         familyi={P\bibinitperiod},
+         given={Illia},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{VA+1}
+    \strng{fullhash}{VASNPNUJJLGANKLPI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{title}{Attention is all you need}
+    \field{volume}{30}
+    \field{journaltitle}{Advances in neural information processing systems}
+    \field{year}{2017}
+  \endentry
+
+  \entry{radford2018improving}{article}{}
+    \name{author}{4}{}{%
+      {{hash=RA}{%
+         family={Radford},
+         familyi={R\bibinitperiod},
+         given={Alec},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=NK}{%
+         family={Narasimhan},
+         familyi={N\bibinitperiod},
+         given={Karthik},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=ST}{%
+         family={Salimans},
+         familyi={S\bibinitperiod},
+         given={Tim},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=SI}{%
+         family={Sutskever},
+         familyi={S\bibinitperiod},
+         given={Ilya},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Technical report, OpenAI}%
+    }
+    \strng{namehash}{RA+1}
+    \strng{fullhash}{RANKSTSI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{title}{Improving language understanding with unsupervised learning}
+    \field{year}{2018}
+  \endentry
+
+  \entry{liu2019roberta}{article}{}
+    \name{author}{10}{}{%
+      {{hash=LY}{%
+         family={Liu},
+         familyi={L\bibinitperiod},
+         given={Yinhan},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=OM}{%
+         family={Ott},
+         familyi={O\bibinitperiod},
+         given={Myle},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=GN}{%
+         family={Goyal},
+         familyi={G\bibinitperiod},
+         given={Naman},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=DJ}{%
+         family={Du},
+         familyi={D\bibinitperiod},
+         given={Jingfei},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=JM}{%
+         family={Joshi},
+         familyi={J\bibinitperiod},
+         given={Mandar},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=CD}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Danqi},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=LO}{%
+         family={Levy},
+         familyi={L\bibinitperiod},
+         given={Omer},
+         giveni={O\bibinitperiod},
+      }}%
+      {{hash=LM}{%
+         family={Lewis},
+         familyi={L\bibinitperiod},
+         given={Mike},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=ZL}{%
+         family={Zettlemoyer},
+         familyi={Z\bibinitperiod},
+         given={Luke},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=SV}{%
+         family={Stoyanov},
+         familyi={S\bibinitperiod},
+         given={Veselin},
+         giveni={V\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{LY+1}
+    \strng{fullhash}{LYOMGNDJJMCDLOLMZLSV1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{title}{Roberta: A robustly optimized bert pretraining approach}
+    \field{journaltitle}{arXiv preprint arXiv:1907.11692}
+    \field{annotation}{%
+    optimizing large model%
+    }
+    \field{year}{2019}
+  \endentry
+
+  \entry{reimers2019sentence}{article}{}
+    \name{author}{2}{}{%
+      {{hash=RN}{%
+         family={Reimers},
+         familyi={R\bibinitperiod},
+         given={Nils},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=GI}{%
+         family={Gurevych},
+         familyi={G\bibinitperiod},
+         given={Iryna},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RNGI1}
+    \strng{fullhash}{RNGI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{title}{Sentence-bert: Sentence embeddings using siamese
+  bert-networks}
+    \field{journaltitle}{arXiv preprint arXiv:1908.10084}
+    \field{annotation}{%
+    bi-encoder based on bert%
+    }
+    \field{year}{2019}
+  \endentry
+
+  \entry{feng2020codebert}{article}{}
+    \true{moreauthor}
+    \true{morelabelname}
+    \name{author}{10}{}{%
+      {{hash=FZ}{%
+         family={Feng},
+         familyi={F\bibinitperiod},
+         given={Zhangyin},
+         giveni={Z\bibinitperiod},
+      }}%
+      {{hash=GD}{%
+         family={Guo},
+         familyi={G\bibinitperiod},
+         given={Daya},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=TD}{%
+         family={Tang},
+         familyi={T\bibinitperiod},
+         given={Duyu},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=DN}{%
+         family={Duan},
+         familyi={D\bibinitperiod},
+         given={Nan},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=FX}{%
+         family={Feng},
+         familyi={F\bibinitperiod},
+         given={Xiaocheng},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=GM}{%
+         family={Gong},
+         familyi={G\bibinitperiod},
+         given={Ming},
+         giveni={M\bibinitperiod},
+      }}%
+      {{hash=SL}{%
+         family={Shou},
+         familyi={S\bibinitperiod},
+         given={Linjun},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=QB}{%
+         family={Qin},
+         familyi={Q\bibinitperiod},
+         given={Bing},
+         giveni={B\bibinitperiod},
+      }}%
+      {{hash=LT}{%
+         family={Liu},
+         familyi={L\bibinitperiod},
+         given={Ting},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=JD}{%
+         family={Jiang},
+         familyi={J\bibinitperiod},
+         given={Daxin},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FZ+1}
+    \strng{fullhash}{FZGDTDDNFXGMSLQBLTJD+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{title}{Codebert: A pre-trained model for programming and natural
+  languages}
+    \field{journaltitle}{arXiv preprint arXiv:2002.08155}
+    \field{annotation}{%
+    multimodal nl and code model%
+    }
+    \field{year}{2020}
+  \endentry
+
+  \entry{gao2021simcse}{article}{}
+    \name{author}{3}{}{%
+      {{hash=GT}{%
+         family={Gao},
+         familyi={G\bibinitperiod},
+         given={Tianyu},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=YX}{%
+         family={Yao},
+         familyi={Y\bibinitperiod},
+         given={Xingcheng},
+         giveni={X\bibinitperiod},
+      }}%
+      {{hash=CD}{%
+         family={Chen},
+         familyi={C\bibinitperiod},
+         given={Danqi},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{GTYXCD1}
+    \strng{fullhash}{GTYXCD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{title}{Simcse: Simple contrastive learning of sentence embeddings}
+    \field{journaltitle}{arXiv preprint arXiv:2104.08821}
+    \field{annotation}{%
+    another method for creation of data for unsupervised learning%
+    }
+    \field{year}{2021}
+  \endentry
+
+  \entry{wang2021tsdae}{article}{}
+    \name{author}{3}{}{%
+      {{hash=WK}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Kexin},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=RN}{%
+         family={Reimers},
+         familyi={R\bibinitperiod},
+         given={Nils},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=GI}{%
+         family={Gurevych},
+         familyi={G\bibinitperiod},
+         given={Iryna},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WKRNGI1}
+    \strng{fullhash}{WKRNGI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{title}{Tsdae: Using transformer-based sequential denoising
+  auto-encoder for unsupervised sentence embedding learning}
+    \field{journaltitle}{arXiv preprint arXiv:2104.06979}
+    \field{annotation}{%
+    another method for creation of data for unsupervised learning%
+    }
+    \field{year}{2021}
+  \endentry
+
+  \entry{wang2021gpl}{article}{}
+    \name{author}{4}{}{%
+      {{hash=WK}{%
+         family={Wang},
+         familyi={W\bibinitperiod},
+         given={Kexin},
+         giveni={K\bibinitperiod},
+      }}%
+      {{hash=TN}{%
+         family={Thakur},
+         familyi={T\bibinitperiod},
+         given={Nandan},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=RN}{%
+         family={Reimers},
+         familyi={R\bibinitperiod},
+         given={Nils},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=GI}{%
+         family={Gurevych},
+         familyi={G\bibinitperiod},
+         given={Iryna},
+         giveni={I\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{WK+1}
+    \strng{fullhash}{WKTNRNGI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{title}{Gpl: Generative pseudo labeling for unsupervised domain
+  adaptation of dense retrieval}
+    \field{journaltitle}{arXiv preprint arXiv:2112.07577}
+    \field{annotation}{%
+    method for creation of data for unsupervised learning%
+    }
+    \field{year}{2021}
+  \endentry
+
+  \entry{basicpandassnippets}{online}{}
+    \name{author}{1}{}{%
+      {{hash=BR}{%
+         family={Balbale},
+         familyi={B\bibinitperiod},
+         given={Raza},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{BR1}
+    \strng{fullhash}{BR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{title}{Basic Pandas Snippets}
+    \verb{url}
+    \verb https://github.com/snippington/snp-pandas-basic/blob/main/snippets/pa
+    \verb ndas-basic.code-snippets
+    \endverb
+    \field{month}{09}
+    \field{year}{2023}
+  \endentry
+
+  \entry{pandaswebsite}{online}{}
+    \name{author}{1}{}{%
+      {{hash=CP}{%
+         family={Community},
+         familyi={C\bibinitperiod},
+         given={Pandas},
+         giveni={P\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{CP1}
+    \strng{fullhash}{CP1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{title}{Pandas Documentation}
+    \verb{url}
+    \verb https://pandas.pydata.org/docs/
+    \endverb
+    \field{month}{09}
+    \field{year}{2023}
+  \endentry
+
+  \entry{chatgpt}{online}{}
+    \name{author}{1}{}{%
+      {{hash=O}{%
+         family={OpenAI},
+         familyi={O\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{O1}
+    \strng{fullhash}{O1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{title}{ChatGPT Website}
+    \verb{url}
+    \verb https://chat.openai.com/
+    \endverb
+    \field{month}{09}
+    \field{year}{2023}
+  \endentry
+
+  \entry{sbert}{online}{}
+    \name{author}{1}{}{%
+      {{hash=RN}{%
+         family={Reimers},
+         familyi={R\bibinitperiod},
+         given={Nils},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RN1}
+    \strng{fullhash}{RN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{2}
+    \field{sortinithash}{2}
+    \field{title}{Sentence-Transformers Documentation}
+    \verb{url}
+    \verb https://www.sbert.net/examples/applications/cross-encoder/README.html
+    \endverb
+    \field{month}{09}
+    \field{year}{2023}
+  \endentry
+\enddatalist
+\endinput

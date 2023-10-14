@@ -1,0 +1,70 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: bsc-thesis.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: biblatex.bst
+Reallocating 'name_of_file' (item size: 1) to 15 items.
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: bsc-thesis-blx.bib
+Database file #2: references.bib
+Warning--I didn't find a database entry for "copilot"
+Biblatex version: 3.19
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+You've used 16 entries,
+            6399 wiz_defined-function locations,
+            1288 strings with 11979 characters,
+and the built_in function-call counts, 150600 in all, are:
+= -- 11586
+> -- 3968
+< -- 643
++ -- 6732
+- -- 2631
+* -- 9664
+:= -- 19385
+add.period$ -- 0
+call.type$ -- 16
+change.case$ -- 192
+chr.to.int$ -- 248
+cite$ -- 30
+duplicate$ -- 16681
+empty$ -- 11586
+format.name$ -- 1248
+if$ -- 27795
+int.to.chr$ -- 0
+int.to.str$ -- 33
+missing$ -- 0
+newline$ -- 624
+num.names$ -- 675
+pop$ -- 5920
+preamble$ -- 1
+purify$ -- 329
+quote$ -- 0
+skip$ -- 3020
+stack$ -- 0
+substring$ -- 20752
+swap$ -- 2702
+text.length$ -- 538
+text.prefix$ -- 15
+top$ -- 1
+type$ -- 532
+warning$ -- 0
+while$ -- 2444
+width$ -- 0
+write$ -- 609
+(There was 1 warning)
