@@ -1,5 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{o}{\PYGZpc{}}\PYG{n}{timeit} \PYG{n}{IndexSearch}\PYG{p}{(}\PYG{n}{recipes}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}../recipes/search\PYGZus{}index.pkl\PYGZsq{}}\PYG{p}{)}
-
-\PYG{c+c1}{\PYGZsh{} 1.50 ms ± 3.07 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)}
-\end{Verbatim}
