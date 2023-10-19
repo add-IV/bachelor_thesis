@@ -6,8 +6,8 @@
 \documentclass[
      12pt,                    % font size
      a4paper,             % paper format
-     BCOR10mm,     % binding correction
-     DIV14,                 % stripe size for margin calculation
+     BCOR=10mm,     % binding correction
+     DIV=14,                 % stripe size for margin calculation
      listof=totoc,                    % table listing in toc
      bibliography=totoc,       % bibliography in toc
      index=totoc,              % index in toc
@@ -84,9 +84,9 @@
 \begin{center}
 \vspace*{3cm}
 \textbf{ 
-\Large Ruprecht-Karls-Universität Heidelberg\\
+\Large Ruprecht Karl University of Heidelberg\\
 \smallskip
-\Large Institut für Informatik\\
+\Large Institute of Computer Science\\
 \smallskip
 \Large Artificial Intelligence for Programming\\
 \smallskip
@@ -99,10 +99,10 @@
 \vspace{0.5\baselineskip}
 \huge
 \setlang{english}
-PandaRec - Code Recommendation System for the Pandas Library based on Recipes \\
+PandaRec - A Recipe-Based Recommendation System for the Pandas Library\\
 \vspace{0.5\baselineskip}
 \setlang{ngerman}
-PandaRec - Code-Empfehlungssystem für die Pandas-Bibliothek auf Basis von Rezepten
+PandaRec - Ein rezeptbasiertes Empfehlungssystem für die Pandas-Bibliothek
 
 \end{center}
 
@@ -125,25 +125,36 @@ Datum der Abgabe: & 19.10.2023
 
 \vspace*{100pt}
 \noindent
-Ich versichere hiermit, dass ich diese Bachelor-Arbeit selbstständig verfasst und keine anderen als die angegebenen Hilfsmittel benutzt habe.
-Sowohl inhaltlich als auch wörtlich entnommene Inhalte wurden als solche kenntlich gemacht.
-Die Arbeit ist in gleicher oder vergleichbarer Form noch bei keiner andere Prüfungsbehörde eingereicht worden.
+Hiermit versichere ich, dass ich die Arbeit selbst verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt und wörtlich oder inhaltlich aus fremden Werken Übernommenes als fremd kenntlich gemacht habe. Ferner versichere ich, dass die übermittelte elektronische Version in Inhalt und Wortlaut mit der gedruckten Version meiner Arbeit vollständig übereinstimmt. Ich bin einverstanden, dass diese elektronische Fassung universitätsintern anhand einer Plagiatssoftware auf Plagiate überprüft wird.
 
 \vspace*{50pt}
 
 \noindent
-Heidelberg, dd.mm.yyyy
+Heidelberg, 
 \cleardoublepage
-
-\section*{Zusammenfassung}
-
-Dies ist eine Zusammenfassung der Arbeit.
 
 \setlang{english}
 \section*{Abstract}
 
-This is the abstract.
+Pandas is a Python library that provides data analysis and manipulation tools that are useful for researchers from all fields. However, Pandas' complexity and vast amount of functions can easily overwhelm new users without programming and data science knowledge. In this thesis, I introduce a system that recommends recipes, code snippets with a name and description.
 
+This system uses a graphical user interface (GUI) within Jupyter Notebooks to take advantage of its cell-by-cell execution capabilities. Users can provide a search query and will be given a list of recommended recipes that can directly be used in the Notebook. This should help the user learn the basics of data manipulation with pandas. Additionally, multiple recommendation algorithms will be compared regarding their accuracy and speed. The algorithms will also be compared to current alternatives like ChatGPT.
+
+In conclusion, this thesis aims to empower researchers with a more approachable tool for harnessing the capabilities of Pandas in their work.
+
+
+\clearpage
+
+\setlang{ngerman}
+\section*{Zusammenfassung}
+
+Pandas ist eine Python-Bibliothek, die Datenanalyse- und Manipulationswerkzeuge bereitstellt, die für Forscher aus allen Fachbereichen nützlich sind. Die Komplexität von Pandas und die Vielzahl von Funktionen können jedoch neue Benutzer ohne Programmier- und Datenkenntnisse leicht überfordern. In dieser Arbeit stelle ich ein System vor, das Empfehlungen für Rezepte, Code-Schnipsel mit Namen und Beschreibung, bereitstellt.
+
+Dieses System verwendet eine grafische Benutzeroberfläche (GUI) innerhalb von Jupyter Notebooks. Benutzer können eine Suchanfrage eingeben und erhalten eine Liste empfohlener Rezepte, die direkt im Notebook verwendet werden können. Dies soll dem Benutzer helfen, die Grundlagen der Datenmanipulation mit Pandas zu erlernen.
+
+Zusätzlich werden mehrere Empfehlungsalgorithmen hinsichtlich ihrer Genauigkeit und Geschwindigkeit verglichen. Die Algorithmen werden auch mit aktuellen Alternativen wie ChatGPT verglichen. Zusammenfassend zielt diese Arbeit darauf ab, Forschern ein benutzerfreundliches Werkzeug zur Verfügung zu stellen, um die Möglichkeiten von Pandas in ihrer Arbeit effizienter zu nutzen.
+
+\setlang{english}
 \tableofcontents
 \cleardoublepage
 \pagenumbering{arabic} 
@@ -162,33 +173,30 @@ This is the abstract.
 
 \section{Motivation}
 
-(NOTE: title page has institut in german and lehrstuhl in english, ask prof what i should write)
-
 Pandas is a library for Python that provides data analysis and manipulation tools~\cite{pandaswebsite}. While it is powerful and flexible, it is equally complex.
 
-Researchers from all fields often have to work with data. However, researchers or users new to data analysis can struggle to learn how to use pandas or similar data manipulation software since searching documentation and tutorials is time-intensive. If the user has limited programming knowledge, this problem gets exacerbated since they must learn multiple things simultaneously.
+Researchers from all fields often have to work with data. However, researchers or users new to data analysis can struggle to learn how to use Pandas or similar data manipulation software since searching documentation and tutorials is time-intensive. If the user has limited programming knowledge, this problem gets exacerbated since they must learn multiple things simultaneously.
 
 Code recommendation systems are a staple in modern software development. Different methods can help developers write code faster and more efficiently, increase code clarity and maintainability, and help with error detection.
 
 \section{Problems}
 
-A recommendation system for the pandas library should be fast, easy to set up, easy to use, and useful to all users. That means it should provide the user with relevant recommendations even if they still need to gain domain knowledge. However, current code recommendation only fulfill some of the described requirements.
+A recommendation system for the Pandas library should be fast, easy to set up, easy to use, and useful to all users. That means it should provide the user with relevant recommendations even if they still need to gain domain knowledge. It should also help the user acquire domain knowledge. However, current code recommendation systems only fulfill some of the described requirements.
 
 \section{Solutions}
 
-My solution uses a Jupyter Notebook GUI that anyone can easily set up in the browser. I will use a set of "recipes" code snippets with at least a name and a description.
-
-In the pursuit of developing a sound code recommendation system, we will compare different methods of recommending code and implement them modularly so that methods can be easily exchanged and even composed out of multiple methods.
+My solution uses a Jupyter Notebook GUI that anyone can easily set up in the browser with Google Colab or Binder. I will use a set of "recipes" code snippets with at least a name and a description.
+In the pursuit of developing a sound code recommendation system, we will compare different methods of recommending code and implement them modularly so that algorithms can be easily exchanged and even composed out of multiple algorithms.
 
 \section{Structure of this Thesis}
 
-In the second chapter, I will present the current state of recommendation systems for pandas and the techniques that I will use in my recommendation system.
+In the second chapter, I will present the current state of recommendation systems for Pandas and the techniques that I will use in my recommendation system.
 The third chapter deals with the design of the GUI and modular recommendation system and then the implementation of the recipes and different algorithms.
 In the fourth chapter, I will evaluate how the specific ranking algorithms and the different recipe datasets perform compared to each other and other recommendation systems.
 
 \chapter{Background}\label{background}
 
-This chapter will introduce the needed background knowledge to the reader. It will introduce the Pandas library, Code Recommendation Systems, how to search for code, and how to rank our recommendation algorithms. 
+This chapter will introduce the needed background knowledge to the reader. It will introduce the Pandas library, code recommendation systems, how to search for code, and how to rank our recommendation algorithms. 
 
 \section{Pandas}
 
@@ -206,10 +214,10 @@ Code recommendation systems help developers write code more efficiently. They ca
 As described by
 \citeauthor*{recommendationsystems}~\citeyear{recommendationsystems}~\cite{recommendationsystems}, code recommendation systems have these design dimensions:
 \begin{description}
-	\item[Context] is the input of the recommendation system. This can include a large amount of different information. We can look at what the user is typing, the file we are in, the codebase in general, and the interaction history. For pandas, we can also look at the current DataFrame and its column- and row names, datatypes, and with a GUI, what part of the DataFrame the user has highlighted.
+	\item[Context] is the input of the recommendation system. This can include a large amount of different information. We can look at what the user is typing, the file we are in, the codebase in general, and the interaction history. For Pandas, we can also look at the current DataFrame and its column- and row names, datatypes, and, with a GUI, what part of the DataFrame the user has highlighted.
 	\item[The Recommendation Engine] uses the context and other data sources, such as data from different repositories and bug reports, to rank the recommendation output.
 	\item[Output] can be provided either on demand or continuously and can be multiple suggestions or a single (often inline) suggestion.
-	\item[User feedback] can change the system in many ways. The user can provide feedback by changing the context and adapting the recommendation engine locally or globally, where feedback either changes the output of the current user or all users.
+	\item[User Feedback] can change the system in many ways. The user can provide feedback by changing the context and adapting the recommendation engine locally or globally, where feedback either changes the output of the current user or all users.
 \end{description}
 
 \section{Existing Code Recommendation Systems}
@@ -223,12 +231,12 @@ Code completion is already a part of most IDEs. It is a form of autocomplete. In
 
 \subsection{Code Generation}
 
-Code recommendation systems can generate entire blocks of code. This can be used for boilerplate code or whole functions. While automated boilerplate cannot help with our use case, there are code generation systems that meet quite a lot of our requirements.
+Code recommendation systems can generate entire blocks of code. This can be used for boilerplate code or whole functions. While automated boilerplate can probably help with the basic steps like importing data, some code generation systems already meet many of our requirements.
 
 \subsection{Generative AI}
 
-(NOTE: Maybe get rid of this, or move before semantic, or redo)
-The Transformer~\cite{vaswani2017attention} has been shown to perform well on natural language processing tasks~\cite{radford2018improving}. Multimodal models like ChatGPT~\cite{chatgpt} and GitHub Copilot~\cite{copilot} are already commonly used to generate code. Using ChatGPT or GitHub Copilot by writing query-like comments performs decently on this task. Some problems are the cost of Copilot and the requirement to be online. How good they are will be discussed in the \Cref{evaluation}.
+Generative AI is artificial intelligence that uses large amounts of data to generate similar data~\cite{generativemodels}.
+Especially the Transformer~\cite{vaswani2017attention} has been shown to perform well on natural language processing tasks~\cite{radford2018improving}. Multimodal models like ChatGPT~\cite{chatgpt} and GitHub Copilot~\cite{copilot}, based on OpenAI Codex, are already commonly used to generate code. Using ChatGPT or GitHub Copilot by writing query-like comments performs decently on this task. However, the GPT family requires a large amount of resources to train and run.
 
 \section{Searching for Code}
 
@@ -247,13 +255,41 @@ Search Indexing builds an inverted index out of the corpus. First, a forward ind
 
 With this index, the search algorithm can quickly retrieve a list of annotations containing the query.
 
+\subsubsection{Fuzzy Search}
+
+Fuzzy search uses a string distance function to search for approximately similar strings. The Levenshtein distance is commonly used. In it, the distance amount increases by a constant for every insertion, deletion, and substitution.
+
+\begin{figure}[htb]
+	\centering
+\begin{align*}
+	lev(a, b) =
+	\begin{cases}
+		|a| & \text{if } |b| = 0\\
+		|b| & \text{if } |a| = 0\\
+		lev(tail(a), tail(b)) & \text{if } a[0] == b[0]\\
+		\min
+		\begin{cases}
+			lev(tail(a), b) &+ \text{ i}\\
+			lev(a, tail(b)) &+ \text{ d}\\
+			lev(tail(a), tail(b)) &+ \text{ c}
+		\end{cases} & \text{else}
+	\end{cases}
+\end{align*}
+\caption[The Levenshtein Distance]{The Levenshtein Distance.}
+\end{figure}
+
+
+If \(\text{i} + \text{d} = \text{c}\), this reduces to the InDel distance, which only counts insertions and deletions.
+
 \subsection{Semantic Search}\label{semantic}
 
-Semantic search can be described as a search for meaning~\cite{bast2016semantic}. It aims to understand the meaning of a query instead of literal matches. The transformer~\cite{vaswani2017attention} is a deep learning architecture that can capture relationships between words and phrases, which enables context-aware applications. For this reason, transformer-based models such as the Generative Pre-trained Transformer~(GPT) and Bidirectional Encoder Representations from Transformers~(BERT) perform well on natural language tasks.
+Semantic search can be described as a search for meaning~\cite{bast2016semantic}. It aims to understand the meaning of a query instead of literal matches. The Transformer~\cite{vaswani2017attention} is a deep learning architecture that can capture relationships between words and phrases, which enables context-aware applications. For this reason, Transformer-based models such as the Generative Pre-trained Transformer~(GPT) and Bidirectional Encoder Representations from Transformers~(BERT) perform well on natural language tasks.
+
 
 \subsection{Bidirectional Encoder Representations from Transformers (BERT)}
 
-BERT~\cite{feng2020codebert} and the more extensively trained RoBERTa~\cite{liu2019roberta} are natural language processing models based on the transformer architecture. They were trained by predicting missing words (masked language model) in sentences from both left and right contexts (Bidirectional). This bidirectionality lends itself to sentence pair regression, like sentence similarity. With BERT, both sentences are passed into the model simultaneously, and the similarity is predicted. This is called cross-encoding and produces similarity scores with great accuracy. However, when cross-encoders compute the similarity between a query and a corpus, they will have to do a cross-encoding for every element of the corpus.
+BERT~\cite{feng2020codebert} and the more extensively trained RoBERTa~\cite{liu2019roberta} are natural language processing models based on the Transformer architecture. They were trained by predicting missing words (masked language model) in sentences from both left and right contexts (bidirectional). This bidirectionality lends itself to sentence pair regression, like sentence similarity.
+With BERT, both sentences are passed into the model simultaneously, and the similarity is predicted. This is called cross-encoding and produces similarity scores with great accuracy. However, when cross-encoders compute the similarity between a query and a corpus, they will have to do a cross-encoding for every element of the corpus.
 
 To combat this, Sentence-BERT~\cite{reimers2019sentence} uses a siamese network structure. Instead of computing the similarity, we compute the sentence embeddings, which can then be compared, often via cosine-similarity or the dot product~\cite{sbert}.
 
@@ -282,14 +318,78 @@ Lastly, we divide the discounted cumulative gain by the ideal discounted cumulat
 \[ NDCG = \frac{DCG}{IDCG}\]
 
 Since the last rank k is crucial, we usually write NDCG@k, e.g., NDCG@10.
-
-\section{Existing Datasets}
-
-We can use existing datasets to fine-tune our models and to evaluate our search algorithms. There is no ready-made dataset for the pandas library, but potentially useful datasets include CodeSearchNet(NOTE:CITE), a dataset of functions and their docstrings, and the StackOverflow  data.
-
 \chapter{Approach}\label{approach}
 
-This chapter will go over my solution. My solution's three major building blocks are the recipes, the recommendation system, and the GUI. It will also go over the different ranking strategies in detail.
+This chapter will go over my solution. My solution's three major building blocks are the GUI, the recipes, and the recommendation system. It will also go over the different ranking strategies in detail.
+
+
+\section{The Jupyter Notebook GUI}
+
+For my solution, I decided to go with a Jupyter Notebook GUI. Jupyter Notebooks are already used extensively in machine learning and data science since they have many essential strengths. Being able to run code cell-by-cell, one can quickly explore and visualize data. The capability to render markdown also helps with documentation. Lastly, services like Google Colab allow for running Notebooks directly in the browser without extensive setup.
+
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{widget_annotated}
+	\caption[Recommender Widget]{\label{fig:recommender}Main parts of the recommender.}
+\end{figure}
+
+The GUI is made of three main building blocks:
+
+\begin{enumerate}
+	\item The data grid.
+	\item The search box.
+	\item The search results.
+\end{enumerate}
+
+There also exists an options dropdown menu.
+
+\subsection{The Data Grid and Search Box}
+
+The data grid uses the library ipydatagrid~\cite{ipydatagrid}, a data grid widget recommended by the Jupyter Tutorial~\cite{jupytertutorial}. It allows for scrolling, resizing, and selecting, which is more than enough for our use case.
+
+The search box is a Text widget.
+
+\subsection{The Search Results}
+
+The search results are shown in a vertical list. Each result has, in order, a name, score, code snippet, copy button, and description. There are also buttons for providing feedback. The descriptions are resizable to allow for longer descriptions. The user can change the amount of returned recipes in the options.
+
+\subsection{Updating Results}
+
+To update the results, I used the observe methods of the various widgets to register a callback. This callback then updates the context of the recommender, recommends recipes, and changes the search results~(\Cref{fig:updateresults}).
+
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=.6\linewidth]{updateresults}
+	\caption[Update Results]{Update Results.\label{fig:updateresults}}
+\end{figure}
+
+There is a consideration here about whether we want the callback to be triggered anytime a change is made or only after a short duration of inactivity. This could result in additional costs, especially for the OpenAI Embeddings since we send more requests than necessary. This is why the PandaRecWidget takes a debounce argument, which optionally overrides the \mintinline[bgcolor=LightGray]{python}|update_recommendation| function with a debounced version~(\Cref{list:debounce}).
+ 
+ \begin{listing}[htb]
+ 	\begin{minted}[
+ 		frame=lines,
+ 		framesep=2mm,
+ 		baselinestretch=1.2,
+ 		fontsize=\footnotesize,
+ 		tabsize=4,
+ 		bgcolor=LightGray,
+ 		linenos
+ 		]{python}
+# pandaRec/panda_rec_widget.py
+if debounce:
+	self.update_recommendations = debounced(0.2, self._base_update_recommendations)
+else:
+	self.update_recommendations = self._base_update_recommendations
+ 	\end{minted}
+ 	\caption[Debounce Recommendations]{Debounce Recommendations.\label{list:debounce}}
+ \end{listing}
+\subsection{Applying the Code Snippet}
+
+We could apply code snippets to the underlying DataFrame in two main ways. We could use \mintinline[bgcolor=LightGray]{python}|eval()| to  evaluate the code snippet directly or copy it to a new cell via user input. The \mintinline[bgcolor=LightGray]{python}|eval()| approach makes changing, e.g., row names before evaluating, more complicated and will also lose Jupyter Notebooks upside of cell-by-cell execution. By copying the snippet to the clipboard, we allow the user to choose what to do with it.
+
+When using the Notebook online, we cannot easily access the clipboard with the Pyperclip library. That is why I created a copy button with \mintinline[bgcolor=LightGray]{python}|ipywidgets.HTML|, which calls the js clipboard api: \mintinline[bgcolor=LightGray]{javascript}|navigator.clipboard.writeText('{copy_text}')|.
 
 \section{Recipes}
 
@@ -298,7 +398,7 @@ Recipes are a data structure consisting of a code snippet, a description, a name
 The name and description field should give the user information about what the recipe is for.
 The code snippets themselves could be common functions for data manipulation, plotting, and data import and export.
 
-The Recipes are implemented as a Python data class since they manage data, not logic.
+The Recipes are implemented as a Python data class since they manage data, not logic~(\Cref{list:recipeclass}).
 
 \begin{listing}[htb]
 \begin{minted}[frame=lines,
@@ -306,9 +406,9 @@ The Recipes are implemented as a Python data class since they manage data, not l
 	baselinestretch=1.2,
 	fontsize=\footnotesize,
 	tabsize=4,
+	bgcolor=LightGray,
 	linenos]{python}
 # pandaRec/recipe.py
-
 @dataclass
 class Recipe:
 	name: str
@@ -316,21 +416,23 @@ class Recipe:
 	code: str
 	keywords: str
 \end{minted}
-\caption{Recipe Dataclass.}
+\caption[Recipe Dataclass]{Recipe Dataclass.\label{list:recipeclass}}
 \end{listing}
 
-The recipes are bundled into a dataset and saved inside a .json file, together with the dataset description and links to other resources I will discuss later. \label{jsonwhy}
+The recipes are bundled into a dataset and saved inside a .json file, together with the dataset description and links to other resources. \label{jsonwhy}
+
+\subsection{Generating Recipes}
 
 There are multiple ways to generate these recipes. One could:
 
 \begin{itemize}
-	\item Generate recipes with the dir() method.
+	\item Generate recipes with the \mintinline[bgcolor=LightGray]{python}|dir()| method.
 	\item Modify already existing snippets, e.g., from here:~\cite{basicpandassnippets}.
-	\item Collect pandas usage data from publicly available sources (Stackoverflow, CodeSearchNet) and search for often used snippets.
-	\item Create snippets from publicly available usage guides for pandas.
+	\item Collect Pandas usage data from publicly available sources (Stackoverflow, CodeSearchNet) and search for often used snippets.
+	\item Create snippets from publicly available usage guides for Pandas.
 \end{itemize}
 
-I used the first method to generate a basic set of recipes like this:
+I used the first method to generate a basic set of recipes~(\Cref{list:genrecepies}).
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -339,6 +441,7 @@ I used the first method to generate a basic set of recipes like this:
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
 		]{python}
 # generate_recipes.ipynb
@@ -347,16 +450,16 @@ I used the first method to generate a basic set of recipes like this:
 def get_methods(object):
 	method_list = []
 	for method in dir(object):
-		# make sure its a function
+		# 1. make sure its a function
 		if not callable(getattr(object, method)):
 			continue
 		method_name = str(method)
 		
-		# ignore internal functions
+		# 2. ignore internal functions
 		if method_name.startswith('_'):
 			continue
 		
-		# only take functions with a docstring
+		# 3. only take functions with a docstring
 		if str(getattr(object, method).__doc__) == 'None':
 			continue
 		method_list.append(
@@ -372,18 +475,23 @@ recipes = [
 	for method in get_methods(df)
 ]
 	\end{minted}
-	\caption{Generate Basic Recipes.}
+	\caption[Generate Basic Recipes]{Generate Basic Recipes.\label{list:genrecepies}}
 \end{listing}
 
-I also used the fourth method on the pandas documentation, specifically "10 minutes to pandas" and the "cookbook" from the pandas user guide (NOTE: cite link).
+I also used the fourth method on the Pandas documentation, specifically "10 minutes to Pandas" and the "cookbook" from the Pandas user guide~\cite{pandaswebsite}. For these, I followed the VSCode snippet syntax for placeholders to make a possible later integration into VSCode easier.
+Lastly, I created recipes from VSCode snippets~\cite{basicpandassnippets}.
 
-For the recipes I created, I followed the VSCode Snippet syntax for placeholder to make a later integration into VSCode easier. More on this in \Cref{futurework}.
+\clearpage
+
+\subsection{Embeddings}
+
+Some of the algorithms require some sort of pre-made representation of the data, specifically an index or an embedding. These can drastically reduce setup time and are therefore saved alongside the recipes.
 
 \section{The Recommendation System}
 
 \subsection{Context}
 
-As described in~\Cref{coderecsystems}, the context is the system's input. My system collects the user query, along with the specified DataFrame and selections, rectangular areas in the DataFrame that the user selected.
+As described in~\Cref{coderecsystems}, the context is the system's input. My system collects the user query, along with the DataFrame and selections, rectangular areas in the DataFrame that the user selected~(\Cref{list:context}).
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -392,12 +500,10 @@ As described in~\Cref{coderecsystems}, the context is the system's input. My sys
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
 		]{python}
 # pandaRec/context.py
-from dataclasses import dataclass
-
-
 @dataclass
 class Selection:
 	r1: int
@@ -411,24 +517,26 @@ class Context:
 	data: DataFrame
 	query: str
 	
-	def __init__(...): ... # basic constructor, left out for brevity
-	
 	def is_whole_row(self, selection: Selection) -> bool:
+		"""Returns True if the given Selection represents an
+		entire row of the DataFrame."""
 		return selection.c1 == 0 and selection.c2 == self.data.shape[1]
 	
 	def is_whole_column(self, selection: Selection) -> bool:
+		"""Returns True if the given Selection represents an
+		entire column of the DataFrame."""
 		return selection.r1 == 0 and selection.r2 == self.data.shape[0]
 	\end{minted}
-	\caption{Context Class.}
+	\caption[Context Class]{Context Class.\label{list:context}}
 \end{listing}
 
-I also provide functions \mintinline[bgcolor=LightGray]{python}|is_whole_row()| and \mintinline[bgcolor=LightGray]{python}|is_whole_column()| so one can check whether a whole row/ column is selected.
+I also provide functions \mintinline[bgcolor=LightGray]{python}|is_whole_row()| and \mintinline[bgcolor=LightGray]{python}|is_whole_column()| so one can check whether a whole row or column is selected.
 
 \subsection{The Recommendation Engine}
 
 My recommendation system uses a strategy pattern for the recommendation algorithm. This makes it easy to implement multiple algorithms.
 
-The recommender class, therefore, only holds the context, the current recommend strategy, and the list of recipes.  Additionally, the strategy result is saved in the recommender as an ordered list of RecipeResults, recipes with scores.
+The recommender class, therefore, only holds the context, the current recommend strategy, and the list of recipes. Additionally, the strategy result is saved in the recommender as an ordered list of RecipeResults, recipes with scores~(\Cref{list:recommend}).
 
 
 \begin{listing}[htb]
@@ -438,37 +546,44 @@ framesep=2mm,
 baselinestretch=1.2,
 fontsize=\footnotesize,
 tabsize=4,
+bgcolor=LightGray,
 linenos
 ]{python}
 # pandaRec/recommender.py
 class Recommender:
 	context: Context
-	search_algorithm: RecommendStrategy
+	strategy: RankingStrategy
 	recipes: list[Recipe]
 	recommended_recipes: list[RecipeResult]
-
-	def __init__(...): ... # basic constructor, left out for brevity
 	
-	def recommend(self): # use the strategies search function
-		self.recommended_recipes = self.search_algorithm.search(
-			self.context, self.recipes
+	# constructor left out for brevity
+	
+	def recommend(self, num_results=10):
+		"""Recommends recipes with the search strategy."""
+		self.recommended_recipes = self.strategy.search(
+			self.context, self.recipes, num_results
 		)
 	
-	def show_results(self) -> str:
-		result = ""
-		for recipe_result in self.recommended_recipes:
-			result +=
-				f"{recipe_result.recipe.name}\t\tScore: {recipe_result.score}\n"
-		return result
+	def get_results(self, n=None) -> list[RecipeResult]:
+		"""Returns the recommended recipes.
+		
+		Args:
+			n: The number of recipes to return."""
+		
+		if n is None:
+			return self.recommended_recipes
+		return self.recommended_recipes[:n]
 \end{minted}
-\caption{Recommender Class\label{list:recommend}.}
+\caption[Recommender Class]{Recommender Class\label{list:recommend}.}
 \end{listing}
 
-I decided not to save a reference to the index of the corresponding recipe inside the RecipeResults because, this way, a strategy can return arbitrary recipes. Storing the result list as a list of recipe indexes and score tuples would eliminate the data duplication, but I prefer the flexibility my approach provides.
+I decided not to save a reference to the index of the corresponding recipe inside the RecipeResults because, this way, a strategy can return arbitrary recipes. Storing the result list as a list of recipe indexes and score tuples would eliminate the data duplication, but I prefer the flexibility my approach provides. This also enables the OpenAI Chat Completion strategy~(\Cref{chatcompletion}).
 
 \subsection{Ranking Strategies}
 
-For my solution, I implemented multiple ranking strategies to compare them. These can be swapped out easily because of the strategy pattern.
+For my solution, I implemented multiple ranking strategies to compare them. These can be swapped out easily because of the strategy pattern~(\Cref{list:strategy}).
+
+
 \begin{listing}[htb]
 \begin{minted}[
 frame=lines,
@@ -476,24 +591,33 @@ framesep=2mm,
 baselinestretch=1.2,
 fontsize=\footnotesize,
 tabsize=4,
+bgcolor=LightGray,
 linenos
 ]{python}
 # pandaRec/strategies.py
 from abc import ABC, abstractmethod
 
 class RankingStrategy(ABC):
-	@abstractmethod
-	def search(self, context: Context, recipes: list[Recipe]) -> list[RecipeResult]:
-		pass
+@abstractmethod
+	def search(self, context: Context, recipes: list[Recipe], num_results=10)
+	-> list[RecipeResult]:
+		"""Searches for recipes based on the context."""
+		
+	def feedback(self, context: Context, recipe: Recipe, positive: bool):
+		"""Provides feedback to the ranking strategy."""
+		
 \end{minted}
-\caption{RankingStrategy Class.}
+\caption[RankingStrategy Abstract Class]{RankingStrategy Abstract Class.\label{list:strategy}}
 \end{listing}
 
-Any strategy we add will inherit this abstract class and provide its search function. The recommender will call this function as shown in \Cref{list:recommend}. All my strategies score the recipes in the interval \( \left[0;1\right] \). Let us first look at a basic strategy to understand how this works.
+Any strategy we add will inherit this abstract class and provide its search function. The recommender will call this function as shown in \Cref{list:recommend}. All my strategies score the recipes in the interval \( \left[0,1\right] \). Let us first look at a basic strategy to understand how this works.
+
+
+\clearpage
 
 \subsubsection{Name Search}
 
-Name search searches for the query string in the name of the recipes, scoring it one if it finds it and not returning the recipe at all if the query string is absent. This ends up in name search working like code completion since the names of the auto-generated recipes are the same as the function names.
+Name search searches for the query string in the name of the recipes, scoring it one if it finds it and not returning the recipe at all if the query string is absent. This ends up in name search working like code completion since the names of the auto-generated recipes are the same as the function names~(\Cref{list:namesearch}).
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -502,46 +626,32 @@ Name search searches for the query string in the name of the recipes, scoring it
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
 		]{python}
 # pandaRec/strategies.py
 class NameSearch(RankingStrategy):
+	"""A simple proof-of-concept ranking strategy that only
+	searches for the query in the recipe name."""
+
 	@staticmethod
-	def search(context: Context, recipes: list[Recipe]) -> list[RecipeResult]:
+	def search(
+		context: Context, recipes: list[Recipe], num_results=10
+	) -> list[RecipeResult]:
 		result = []
 		for recipe in recipes:
 			if context.query in recipe.name:
 			result.append(RecipeResult(1, recipe))
-	return result
+	return result[:num_results]
 \end{minted}
-\caption{Name Search.}
+\caption[Name Search]{Name Search.\label{list:namesearch}}
 \end{listing}
 
 We can see with this example how a ranking algorithm will work; it will iterate over the recipes, score them, sort them (not the case here since the scores are all 1), and then return them to the recommender.
 
 \subsubsection{Fuzzy Search}
 
-Fuzzy search uses a string distance function to search for approximately similar strings. The Levenshtein distance is commonly used. In it, the distance amount increases by a constant for every insertion, deletion, and substitution.
-
-\begin{align}[htb]
-lev(a, b) =
-\begin{cases}
-	|a| & \text{if } |b| = 0\\
-	|b| & \text{if } |a| = 0\\
-	lev(tail(a), tail(b)) & \text{if } a[0] == b[0]\\
-	\min
-	\begin{cases}
-		lev(tail(a), b) &+ \text{ i}\\
-		lev(a, tail(b)) &+ \text{ d}\\
-		lev(tail(a), tail(b)) &+ \text{ c}
-	\end{cases} & \text{else}
-\end{cases}
-\end{align}
-
-
-If \(\text{i} + \text{d} = \text{c}\), this reduces to the InDel distance, which only counts insertions and deletions. Since performance starts to matter here, I have used the library "rapidfuzz" to calculate the distances. Their \mintinline[bgcolor=LightGray]{python}|partial_token_sort_ratio| function sorts the words and calculates the partial ratio between the prompt and the description.
-
-(NOTE: funky code placement, fix after everything else is done)
+To implement Fuzzy Search I use the library "rapidfuzz" to calculate the lexical distances between the search query and the descriptions. Their \mintinline[bgcolor=LightGray]{python}|partial_token_sort_ratio| function sorts the words and calculates the partial ratio between the prompt and the description~(\Cref{list:fuzzy}).
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -550,33 +660,35 @@ If \(\text{i} + \text{d} = \text{c}\), this reduces to the InDel distance, which
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
 		]{python}
-# pandaRec/strategies.py
-class FuzzySearchDescription(RankingStrategy):
-	def __init__(self, ratio=fuzz.partial_token_sort_ratio):
-		super().__init__()
-		self.ratio = ratio # let the user choose a different ratio if they want
-	
-	def search(self, context: Context, recipes: list[Recipe]) -> list[RecipeResult]:
-		result = []
-		for recipe in recipes:
-			score = self.ratio(context.query, recipe.description,
-			                   processor=default_process)
-			result.append(RecipeResult(score, recipe))
-		result.sort(key=lambda recipe_result: recipe_result.score, reverse=True)
-		return result
+# pandaRec/strategies.py FuzzySearchDescription class
+def __init__(self, ratio=fuzz.partial_token_sort_ratio):
+	"""Initializes the fuzzy search ranking with a given rapidfuzz ratio."""
+	super().__init__()
+	self.ratio = ratio 
+
+def search(
+	self, context: Context, recipes: list[Recipe], num_results=10
+) -> list[RecipeResult]:
+	result = []
+	for recipe in recipes:
+		score = self.ratio(context.query, recipe.description,
+                  processor=default_process)
+		result.append(RecipeResult(score, recipe))
+	result.sort(key=lambda recipe_result: recipe_result.score, reverse=True)
+	return result[:num_results]
 		\end{minted}
-	\caption{Fuzzy Search.}
+	\caption[Fuzzy Search]{Fuzzy Search.\label{list:fuzzy}}
 \end{listing}
 
-The partial ratio they use is implemented in C++ and runs for short queries (n<64), most queries will be this size, in worst-case O(nm) time, with m being the number of different alignments of the shorter string in the bigger string, effectively the size of the bigger string. Since we must iterate over all recipes, we get O(nmr), which can incur noticeable slowdowns (in the decisecond range) on web-hosted Jupyter engines. So, let us look at an algorithm that still allows us to find partial matches and matches of similar words while simultaneously being way faster.
+I use a library for this because performance starts to matter here. The partial ratio they use is implemented in C++ and runs for short queries (n<64) in worst-case O(nm) time, with m being the number of different alignments of the shorter string in the bigger string, so effectively the size of the bigger string if they are large enough. Since we must iterate over all recipes, we get O(nmr), which can incur noticeable slowdowns (in the decisecond range) on web-hosted Jupyter engines. So, let us look at an algorithm that still allows us to find partial matches and matches of similar words while simultaneously being way faster.
 
-\clearpage
 
 \subsubsection{Index Search}
 
-I have already introduced index search in \Cref{indexsearch}. We build the index when we construct the strategy, only if we do not provide a path to a prebuilt built index:
+I have already introduced index search in \Cref{indexsearch}. When we construct the strategy, we build the index only if we do not provide a path to a prebuilt index~(\Cref{list:index}).
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -585,12 +697,13 @@ I have already introduced index search in \Cref{indexsearch}. We build the index
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
-		highlightlines={6-8},
+		bgcolor=LightGray,
+		highlightlines={5-8},
 		linenos
 		]{python}
-# pandaRec/strategies.py
-class IndexSearch(RankingStrategy):
-	def __init__(self, recipes: list[Recipe], path: str = ""):
+# pandaRec/strategies.py IndexSearch class
+def __init__(self, recipes: list[Recipe], path: str = ""):
+	"""The search index can be generated on the fly or loaded from a file."""
 	super().__init__()
 	if not path:
 		self.index = generate_search_index(
@@ -599,12 +712,10 @@ class IndexSearch(RankingStrategy):
 	else:
 		self.index = load_search_index(path)
 	\end{minted}
-	\caption{Index Search Constructor.}
+	\caption[Index Search Constructor]{Index Search Constructor.\label{list:index}}
 \end{listing}
 
-This path can be saved alongside the list of recipes in the .json and is one of the paths I alluded to in \Cref{jsonwhy}.
-
-Before generating the index, we first want to lemmatize the descriptions (see~\Cref{lemmatize}). For this, we start by tokenizing the descriptions with the regex \mintinline[bgcolor=LightGray]{text}|"\w*[a-zA-Z]\w*"|, which matches words with at least one letter. We then use the Natural Language Toolkit NLTK to lemmatize the words and remove common stop words like "a" or "the" that are irrelevant to the search.
+This path can be saved alongside the list of recipes in the .json, as mentioned in \Cref{jsonwhy}. Before generating the index, we first want to lemmatize the descriptions (see~\Cref{lemmatize}). For this, we start by tokenizing the descriptions with the regex \mintinline[bgcolor=LightGray]{text}|"\w*[a-zA-Z]\w*"|, which matches words with at least one letter. We then use the Natural Language Toolkit NLTK to lemmatize the words and remove common stop words like "a" or "the" that are irrelevant to the search~(\Cref{list:lemmatize}).
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -613,23 +724,31 @@ Before generating the index, we first want to lemmatize the descriptions (see~\C
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
 		]{python}
 # pandaRec/search_index.py
 def lemmatize_no_stop_words(text: str) -> list[str]:
+	"""Lemmatizes the given text and removes stop words.
+	Stop words are words that are very common and thus do not carry much meaning."""
+	# download the NLTK wordnet and related resources
+	nltk.download("wordnet", quiet=True)
+	nltk.download("omw-1.4", quiet=True)
+	nltk.download("stopwords", quiet=True)
 	words = re.findall(r"\w*[a-zA-Z]\w*", text)
 	wnl = WordNetLemmatizer()
 	return [
-		wnl.lemmatize(word)
-		for word in words
+		wnl.lemmatize(word) for word in words
 		if word not in stopwords.words("english")
-		# stopwords are common words like "a" that are not relevant for the search
-		]
+	]
 	\end{minted}
-	\caption{Lemmatization.}
+	\caption[Lemmatization]{Lemmatization.\label{list:lemmatize}}
 \end{listing}
 
-We can then build the forward index and, lastly, the inverted index.
+
+We can then build the forward index and, lastly, the inverted index~(\Cref{list:invertedindex}).
+
+\clearpage
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -638,11 +757,13 @@ We can then build the forward index and, lastly, the inverted index.
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
 		]{python}
 # pandaRec/search_index.py
 def generate_search_index(descriptions: list[str])
 		-> dict[str, list[tuple[int, int]]]:
+	"""Generates a search index from the given list of descriptions."""
 	# 1. Lemmatize the descriptions
 	lemmatized_descriptions = [
 			lemmatize_no_stop_words(description) for description in descriptions
@@ -653,8 +774,8 @@ def generate_search_index(descriptions: list[str])
 			[(word, description.count(word)) for word in set(description)]
 			for description in lemmatized_descriptions
 		]
-	# 3. construct the inverted index as hashmap with list of
-	# (description_index, frequency) tuples for each word
+		# 3. construct the inverted index, one list of
+		# (description_index, frequency) tuples per word
 	frequency_per_word = {}
 	for idx, description in enumerate(frequency_per_description):
 		for (word, count) in description:
@@ -664,11 +785,11 @@ def generate_search_index(descriptions: list[str])
 				frequency_per_word[word].append((idx, count))
 	return frequency_per_word
 	\end{minted}
-	\caption{Building the Inverted Index.}
+	\caption[Building the Inverted Index]{Building the Inverted Index.\label{list:invertedindex}}
 \end{listing}
 
 We can then pickle the hashmap to save it to disk.
-When searching for a query, we lemmatize it and normalize how many query words are in each document.
+When searching for a query, we lemmatize it and normalize how many query words are in each document~(\Cref{list:searchindex}).
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -677,40 +798,39 @@ When searching for a query, we lemmatize it and normalize how many query words a
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
 		]{python}
-# pandaRec/strategies.py
-class IndexSearch(RankingStrategy):
-	...
+# pandaRec/strategies.py IndexSearch class
+def search(
+	self, context: Context, recipes: list[Recipe], num_results=10
+) -> list[RecipeResult]:
+	lemmatized_search = lemmatize_no_stop_words(context.query)
 	
-	def search(self, context: Context, recipes: list[Recipe]) -> list[RecipeResult]:
-		lemmatized_search = lemmatize_no_stop_words(context.query)
-		
-		# add 1 to the score for each word that is in the description (per recipe)
-		scores = len(recipes) * [0]
-		for word in lemmatized_search:
-			if word in self.index:
-				for idx, _ in self.index[word]:
-					scores[idx] += 1
-		
-		num_words = len(lemmatized_search)
-		result = [
-				RecipeResult(score / num_words, recipe) # normalize score
-				# scores and recipes are in the same order so we can zip() them
-				for score, recipe in zip(scores, recipes) 
-			]
-		result.sort(key=lambda recipe_result: recipe_result.score, reverse=True)
-		return result
+	# add 1 to the score for each word that is in the description (per recipe)
+	scores = len(recipes) * [0]
+	for word in lemmatized_search:
+		if word in self.index:
+			for idx, _ in self.index[word]:
+				scores[idx] += 1
+	
+	num_words = len(lemmatized_search)
+	result = [
+			RecipeResult(score / num_words, recipe) # normalize score
+			# scores and recipes are in the same order so we can zip() them
+			for score, recipe in zip(scores, recipes) 
+		]
+	result.sort(key=lambda recipe_result: recipe_result.score, reverse=True)
+	return result[:num_results]
 \end{minted}
-\caption{Searching the Inverted Index.}
+\caption[Searching the Inverted Index]{Searching the Inverted Index.\label{list:searchindex}}
 \end{listing}
 
 We also must sort the list of results since we want this list to be in the order of ranking.
-\clearpage
 
 \subsubsection{Semantic Search}
 
-The basics of semantic search were already described in \Cref{semantic}. To implement a semantic search, we will use the Sentence-Transformers library, which is originally based on~\cite{reimers2019sentence}. Like constructing the reverse index in the index-based search, we first must create embeddings for all our recipes. This is again handled in the constructor.
+The basics of semantic search were already described in \Cref{semantic}. To implement a semantic search, we will use the Sentence-Transformers library, which is originally based on~\cite{reimers2019sentence}. Like constructing the reverse index in the index-based search, we first must create embeddings for all our recipes. This is again handled in the constructor~(\Cref{list:embedding}).
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -719,12 +839,13 @@ The basics of semantic search were already described in \Cref{semantic}. To impl
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
 		]{python}
-		# pandaRec/strategies.py
-class SemanticSearch(RankingStrategy):
-	def __init__(self, recipes: list[Recipe], path: str = "",
-			     model: str = "sentence-transformers/all-mpnet-base-v2"):
+# pandaRec/strategies.py SemanticSearch class
+def __init__(self, recipes: list[Recipe], path: str = "",
+    model: str = "sentence-transformers/all-mpnet-base-v2"):
+	"""The embeddings can be generated on the fly or loaded from a file."""
 	super().__init__()
 	self.model = SentenceTransformer(model)
 	descriptions = [recipe.description for recipe in recipes]
@@ -733,10 +854,12 @@ class SemanticSearch(RankingStrategy):
 	else:
 		self.embeddings = load_embeddings(path)
 	\end{minted}
-	\caption{Embedding the Recipes.}
+	\caption[Embedding the Recipes]{Embedding the Recipes.\label{list:embedding}}
 \end{listing}
 
-We can then embed our query and use the cosine similarity to search for descriptions with similar semantic meanings. I have tested this algorithm with three different models: "all-mpnet-base-v2" and "all-MiniLM-L6-v2" which are general general-purpose, and "krlvi/sentence-t5-base-nlpl-code\_search\_net" which is trained with the "code\_search\_net" dataset (NOTE:cite). In \Cref{semanticmodels} I will evaluate the differences between these models.
+\clearpage
+
+We can then embed our query and use the cosine similarity to search for descriptions with similar semantic meanings~(\Cref{list:searchembed}). I have tested this algorithm with three different models: \mintinline[bgcolor=LightGray]{text}|all-mpnet-base-v2| and \mintinline[bgcolor=LightGray]{text}|all-MiniLM-L6-v2| which are general general-purpose, and \mintinline[bgcolor=LightGray]{text}|krlvi/sentence-t5-base-nlpl-code_search_net| which is trained with the CodeSearchNet~\cite{husain2019codesearchnet} dataset. In \Cref{semanticmodels} I will evaluate the differences between these models.
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -745,32 +868,31 @@ We can then embed our query and use the cosine similarity to search for descript
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
 		]{python}
-# pandaRec/strategies.py
-class SemanticSearch(RankingStrategy):
-	...
-	
-	def search(self, context: Context, recipes: list[Recipe]) -> list[RecipeResult]:
-		query_embedding = self.model.encode(context.query, convert_to_tensor=True)
-		cos_scores = [
-			util.cos_sim(query_embedding, embedding).item(
-			for embedding in self.embeddings
-		]
-		result = [
-			RecipeResult(score, recipe)
-			for recipe, score in zip(recipes, cos_scores)
-		]
-		result.sort(key=lambda recipe_result: recipe_result.score, reverse=True)
-		return result
-
+# pandaRec/strategies.py SemanticSearch class
+def search(self, context: Context, recipes: list[Recipe], num_results=10)
+	-> list[RecipeResult]:
+	query_embedding = self.model.encode(context.query, convert_to_tensor=True)
+	cos_scores = [
+		util.cos_sim(query_embedding, embedding).item(
+		for embedding in self.embeddings
+	]
+	result = [
+		RecipeResult(score, recipe)
+		for recipe, score in zip(recipes, cos_scores)
+	]
+	result.sort(key=lambda recipe_result: recipe_result.score, reverse=True)
+	return result[:num_results]
 	\end{minted}
-	\caption{Searching the Embeddings.\label{list:searchembed}}
+	\caption[Searching the Embeddings]{Searching the Embeddings.\label{list:searchembed}}
 \end{listing}
 	
 \subsubsection{OpenAI Embeddings}
 
-We can also use OpenAIs API to generate embeddings. Their util function \mintinline[bgcolor=LightGray]{python}|get_embeddings| automatically manages batching, but the process is other than that the same as with Sentence-Transformers. The ranking process is the same as in \Cref{list:searchembed}.
+We can also use OpenAIs API to generate embeddings~(\Cref{list:openaiembed}). Their function \mintinline[bgcolor=LightGray]{python}|get_embeddings| automatically manages batching, but the process is other than that the same as with Sentence-Transformers. The ranking process is the same as in~\Cref{list:searchembed}.
+
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -779,65 +901,27 @@ We can also use OpenAIs API to generate embeddings. Their util function \mintinl
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
 		]{python}
-# pandaRec/strategies.py
-class OpenAIEmbeddings(RankingStrategy):
-	def __init__(
-		self,
-		recipes: list[Recipe],
-		path: str = "",
-		model: str = "text-embedding-ada-002",
-	):
-		super().__init__()
-		self.model = model
-		descriptions = [recipe.description for recipe in recipes]
-		if not path:
-			self.embeddings = get_embeddings(descriptions, engine=self.model)
-		else:
-			self.embeddings = load_embeddings(path)
+# pandaRec/strategies.py OpenAIEmbeddings class
+def __init__(self, recipes: list[Recipe], path: str = "",
+		 model: str = "text-embedding-ada-002"):
+	"""The embeddings can be generated on the fly or loaded from a file."""
+	super().__init__()
+	self.model = model
+	descriptions = [recipe.description for recipe in recipes]
+	if not path:
+		self.embeddings = get_embeddings(descriptions, engine=self.model)
+	else:
+		self.embeddings = load_embeddings(path)
 \end{minted}
-\caption{OpenAI embeddings.}
+\caption[OpenAI embeddings]{OpenAI embeddings.\label{list:openaiembed}}
 \end{listing}
 
+\subsubsection{OpenAI Chat Completion}\label{chatcompletion}
 
-\clearpage
-
-\section{The Jupyter Notebook GUI}
-
-For my solution, I decided to go with a Jupyter Notebook GUI. Jupyter Notebooks are already used extensively in machine learning and data science since they have many essential strengths in these fields. Being able to run code cell-by-cell, one can quickly explore and visualize data. The capability to render markdown also helps with documentation. Lastly, services like google colab allow for running notebooks directly in the browser without extensive setup.
-
-(NOTE: Maybe change to a screenshot that shows off the code field better)
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[width=\linewidth]{widget_annotated}
-	\caption[Recommender Widget]{\label{fig:encoders}Main parts of the recommender.}
-\end{figure}
-
-The GUI is made of three main building blocks:
-
-\begin{enumerate}
-	\item The data grid.
-	\item The search box.
-	\item The search results.
-\end{enumerate}
-
-There also exists an options dropdown menu.
-
-\subsection{The Data Grid and Search Box}
-
-The data grid uses the library ipydatagrid(NOTE:cite), a data grid widget that is recommended by the Jupyter Tutorial(NOTE:cite). It allows for scrolling, resizing, and selecting, which is more than enough for our use case.
-
-The search box is a Text widget.
-
-\subsection{The Search Results}
-
-The search results are shown in a vertical list. Each result has, in order, a name, score, code snippet, copy button, and description. The descriptions are resizable to allow for longer descriptions. The user can change the length of the list in the options.
-
-\subsection{Updating Results}
-
-To update the results, I used the observe methods of the various widgets to register a callback.
+Instead of using OpenAI's API to generate embeddings, we can use the chat completion generative AI to freely generate recipes. For this I use this system message~(\Cref{list:systemmessage}):
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -846,31 +930,27 @@ To update the results, I used the observe methods of the various widgets to regi
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
-		]{python}
-		# pandaRec/panda_rec_widget.py
-		class PandaRecWidget(widgets.VBox):
-		def __init__(...):
-		...
-		self.search_box.observe(self.update_recommendations, names="value")
-		self.data_grid.observe(self.update_recommendations, names="selected_cells")
-		
-		def update_recommendations(self, _change):
-		self.recommender.set_search(str(self.search_box.value))
-		self.recommender.set_selection(self.data_grid.selected_cells)
-		self.recommender.recommend()
-		self.result_widget.update(self.recommender.recommended_recipes)
+		]{text}
+You are a code recommendation system that recommends code snippets from
+the python pandas library that can manipulate a DataFrame based on a user query.
+The recommendations should have a name, a code snippet and a description.
+The format is:
+name: <name>
+code: <code>
+description: <description>
+You will return at most 5 code snippets that are relevant to the task
+in order of relevance.
 	\end{minted}
-	\caption{Observe Callbacks.}
+	\caption[OpenAI System Message]{OpenAI System Message.\label{list:systemmessage}}
 \end{listing}
 
-This callback then updates the context of the recommender, recommends recipes, and changes the search results. There is a consideration here about whether we want the callback to be triggered anytime a change is made or only after a short duration of inactivity. This could result in additional costs, especially for the OpenAI Embeddings since we send more requests than necessary. I decided not to implement this since, as we will see, all algorithms are quick. If needed, however, one could follow the Jupyter Widgets Documentation to create a debouncing decorator(NOTE:cite). (NOTE: I did this by now, update)
+This takes advantage of the fact that RecipeResults are not bound to the predefined recipes.
 
-\subsection{Applying the Code Snippet}
+\subsubsection{Web-Based Search}
 
-We could apply code snippets to the underlying DataFrame in two main ways. We could use \mintinline[bgcolor=LightGray]{python}|eval()| to directly evaluate the code snippet or copy it to a new cell directly or via user input. The \mintinline[bgcolor=LightGray]{python}|eval()| approach makes changing, e.g., row names before evaluating, more complicated and will also lose Jupyter notebooks upside of cell-by-cell execution. By copying the snippet to the clipboard, we allow the user to choose what to do with it.
-
-When using the notebook online, we cannot easily access the clipboard with the Pyperclip library. That is why I created a copy button with \mintinline[bgcolor=LightGray]{python}|ipywidgets.HTML|, which allows for custom HTML input.
+Using WebSockets, we can offload the ranking algorithm to a server. This server can process and deliver recommendations to multiple clients simultaneously. But, more importantly, we can collect usage data from the clients to improve our recipe dataset and the Semantic Search model. In my implementation, I send the query and the wanted number of results as a JSON string and receive that many RecipeResults. There is a small detail here where Jupyter Notebooks already uses an async loop, and I therefore use the package \mintinline[bgcolor=LightGray]{python}|nest_asyncio| so i can still use \mintinline[bgcolor=LightGray]{python}|asyncio.run()|~(\Cref{list:websocket}).
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -879,30 +959,51 @@ When using the notebook online, we cannot easily access the clipboard with the P
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
 		]{python}
-# pandaRec/copybutton.py
-import ipywidgets as widgets
+# pandaRec/strategies.py WebSocketStrategy class
+async def asearch(
+	self, context: Context, _recipes: list[Recipe], num_results=10)
+-> str:
+	"""async search"""
+	payload = json.dumps({
+		"type": "search",
+		"query": context.query,
+		"num_results": num_results
+	})
+	async with websockets.connect(self.uri) as websocket:
+		await websocket.send(payload)
+		result = await websocket.recv()
+	return result
 
-def copy_button_html(copytext=""):
-	base_html = """
-	<button class="copybutton" onclick=navigator.clipboard.writeText('{}')>
-		Copy
-	</button>
-	"""
-	return base_html.format(copytext)
-
+def search(self, context: Context, recipes: list[Recipe], num_results):
+	text_result = asyncio.run(self.asearch(context, recipes, num_results))
+	result = self.recipe_results_from_json(text_result)
+	return result
 	\end{minted}
-	\caption{Copy Button.}
+	\caption[Web Socket Client]{Web Socket Client.\label{list:websocket}}
 \end{listing}
+
+\section{Collecting User Feedback}
+
+For now, we only looked at the search method of the RankingStrategy abstract class. There is a second method that is for collecting user feedback. Pressing one of the feedback buttons allows the user to provide positive or negative feedback for a recommendation. We can collect this feedback on the server and use it to fine-tune our models in the future.
 
 \chapter{Evaluation}\label{evaluation}
 
 This chapter evaluates the different ranking algorithms concerning their setup speed, search speed, and ranking performance. It will also compare the different recipe datasets.
 
+\section{Research Questions}
+
+Our solution should be fast, easy to set up, use, and useful to all users. I will start by testing the speed of the system. For this, I will decide what an acceptable delay is and then test if the algorithms are faster than this acceptable delay. To evaluate the usefulness of my solution, I will calculate the accuracy of the algorithms and compare them to ChatGPT.
+
+\section{Acceptable Delays}
+
+I consider everything with a delay under \SI{50}{\milli\second} real-time. Over \SI{100}{\milli\second}, the search could take longer than the delay between typed characters. Jupyter Notebooks automatically only handle input after all Python code has finished running. Adding a debounce~(\Cref{list:debounce}) is recommended if the recommender takes longer than the delay between two character inputs. A delay over a few seconds is no longer acceptable.
+
 \section{Setup and Search Delays}
 
-To evaluate delays in the system, we can use Jupyter notebooks inbuild \%timeit magic command, which uses the timeit module to time the execution of a statement. As an example, this is what timing the setup time for index search with a saved index looks like:
+All delays were timed on an AMD Ryzen 7 5800X3D CPU. To evaluate delays in the system, we can use Jupyter Notebooks inbuild \%timeit magic command, which uses the timeit module to time the execution of a statement. For example, this is what timing the setup time for index search with a saved index looks like~(\Cref{list:searchsetup}).
 
 \begin{listing}[htb]
 	\begin{minted}[
@@ -911,13 +1012,14 @@ To evaluate delays in the system, we can use Jupyter notebooks inbuild \%timeit 
 		baselinestretch=1.2,
 		fontsize=\footnotesize,
 		tabsize=4,
+		bgcolor=LightGray,
 		linenos
 		]{python}
 %timeit IndexSearch(recipes, '../recipes/search_index.pkl')
 
 # 1.50 ms ± 3.07 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 	\end{minted}
-	\caption{Timing index search with a saved index.}
+	\caption[Timing index search with a saved index]{Timing index search with a saved index.\label{list:searchsetup}}
 \end{listing}
 
 If we do this for all implemented algorithms, we can compare their setup and search time. I have used the query "fill missing values with zero" to analyze search time.
@@ -927,23 +1029,28 @@ If we do this for all implemented algorithms, we can compare their setup and sea
 	\centering
 \begin{tabular}{l S S}
 	\toprule
-	Name                     & {Setup Time}                   & {Search Time}                  \\ \midrule
+	Name                     & {Setup Delay}                   & {Search Delay}                  \\ \midrule
 	Name Search              & \SI{68(0.2)}{\nano\second}     & \SI{6.53(0.08)}{\micro\second} \\
 	Fuzzy Name Search        & \SI{68.4(0.5)}{\nano\second}   & \SI{756(1.3)}{\micro\second}   \\
 	Fuzzy Description Search & \SI{276(0.8)}{\nano\second}    & \SI{10(0.05)}{\milli\second}   \\
 	Index Search             & \SI{7.87(0.08)}{\second}       & \SI{1.74(0.01)}{\milli\second} \\
 	Semantic Search          & \SI{85(1)}{\second}            & \SI{38.2(0.9)}{\milli\second}  \\
-	OpenAI Embedding         & \SI{3(1)}{\second}             & \SI{668(949)}{\milli\second}   \\ \midrule
+	OpenAI Embedding         & \SI{3(1)}{\second}             & \SI{668(949)}{\milli\second}   \\
+	OpenAI Chat Completion   & \SI{530(14.9)}{\nano\second}   & \SI{27.4(3.7)}{\second}        \\ \midrule
 	\multicolumn{3}{l}{Saved Index/ Embedding}                                                 \\ \midrule
 	Index Search             & \SI{1.5(0.03)}{\milli\second}  & {-}                            \\
 	Semantic Search          & \SI{682(10)}{\milli\second}    & {-}                            \\
 	OpenAI Embedding         & \SI{27.5(0.25)}{\milli\second} & {-}                            \\ \bottomrule
 \end{tabular}
-\caption[Search Delay]{\label{tab:delay}Setup and search delay for all implemented algorithms.}
+\caption[Setup and Search Delay]{\label{tab:delay}Setup and search delay for all implemented algorithms.}
 \end{table}
 
-Name search and fuzzy name search both do not have any setup, and fuzzy description search only registers the fuzzy ratio algorithm, which results in basically instant setup time. Index search takes about 8 seconds to build the index.
-The embedding using Sentence Transformers takes about one and a half minutes to embed all the descriptions. This could be sped up by using the GPU by passing \mintinline[bgcolor=LightGray]{python}|device="cuda"| to the SentenceTransformer constructor. The OpenAI Embedding is batched and calculated remotely, which should keep the setup time decoupled from the hardware.
+Name search and fuzzy name search both do not have any setup, and fuzzy description search only registers the fuzzy ratio algorithm, which results in basically instant setup time. Index search takes about 8 seconds to build the index. The embedding using Sentence Transformers takes about one and a half minutes to embed all the descriptions. This could be sped up by using the GPU by passing \mintinline[bgcolor=LightGray]{python}|device="cuda"| to the SentenceTransformer constructor. We can eliminate most of the setup time by using a precalculated index or embedding.
+The search delay of most algorithms is under \SI{50}{\milli\second}, but OpenAI Embeddings take noticeably longer and need a debounce. OpenAI Chat Completion takes the longest, well over what I consider acceptable for this setup.
+
+\subsection{Setup Time of the Solution}
+
+My solution compares multiple different algorithms, resulting in many needed packages. This, in turn, increases the time needed to set up an environment in, e.g., google colab. I recommend getting rid of all algorithms except Semantic Search for a usable version.
 
 \section{Algorithm Accuracy}
 
@@ -951,15 +1058,11 @@ To evaluate the accuracy of the algorithms, we will use the NDCG introduced in \
 
 \subsection{Creating the Ranking Dataset}
 
-There are no good pre-existing datasets for ranking the algorithms, so I will create my own. To do this, I selected the article (NOTE: cite article). For every one of the thirty functions, I created a description and selected recipes that can fulfill these goals (NOTE: weird wording), which I assigned the score one. I then calculated the NDCG@5 for each of the algorithms. For some of the descriptions, none of the recipes can fulfill the goal. These are not counted towards the NDCG@5 score (since the IDCG@5 is 0, breaking our formula). Here is an overview of how many of the descriptions cannot be achieved by each recipe dataset:
-
-(NOTE: Table of nonachievements)
+There are no good pre-existing datasets for ranking the algorithms, so I will create my own. To do this, I selected the article~\cite{pandasfunctions}. For every one of the thirty functions, I created a description and selected recipes that can fulfill these goals, which I assigned the score one. I then calculated the NDCG@5 for each of the algorithms. For some of the descriptions, none of the recipes can fulfill the goal. These are not counted towards the NDCG@5 score (since the IDCG@5 is 0, breaking our formula).
 
 \subsection{Ranking Based on the Autogenerated Recipes}
 
 Since none of the ranking descriptions are substrings of the recipes' names, Name Search does not recommend anything and, therefore, always scores zero. This is fine since it worked more as a proof of concept, but I will omit it in the following tables.
-
-I was expecting both the lexical searches and the embeddings to work well on the autogenerated recipes since they have a decently long description, with a mean length of 2221 characters and a mean amount of 71.6 lines.
 
 
 \begin{table}[htb]
@@ -977,17 +1080,17 @@ I was expecting both the lexical searches and the embeddings to work well on the
 	\caption[NDCG Scores]{\label{tab:ndcg}NDCG Scores for all implemented algorithms.}
 \end{table}
 
-The Lexical search algorithms work noticably (NOTE:finish)
+The Lexical search algorithms work noticeably worse. This is probably because of the shortness of our descriptions and the technical language used in the descriptions.
 
 \subsection{Comparing Semantic Search Models\label{semanticmodels}}
 
 Now, let us compare the different models I considered for the semantic search using Sentence-Transformers.
 
 \begin{description}
-	\item[all-mpnet-base-v2] is the general-purpose model from Sentence-Transformers with the best quality.
-	\item[all-MiniLM-L6-v2] is a smaller general-purpose model that the Sentence-Transformer documentation claims is five times faster at the cost of some performance.
+	\item[all-mpnet-base-v2] is the general-purpose model from Sentence-Transformers with the best quality. It was partly trained on CodeSearchNet.
+	\item[all-MiniLM-L6-v2] is a smaller general-purpose model that the Sentence-Transformer documentation claims is five times faster at the cost of some performance. It was also partly trained on CodeSearchNet.
 	\item[sentence-t5-base] is the base model of the t5 architecture, which is trained on predicting multiple masked words simultaneously. 
-	\item[krlvi/sentence-t5-base-nlpl-code\_search\_net] is based on a t5-base checkpoint and trained on the "code\_search\_net" dataset.
+	\item[krlvi/sentence-t5-base-nlpl-code\_search\_net] is based on a t5-base checkpoint and then trained on CodeSearchNet.
 \end{description}
 
 \begin{table}[htb]
@@ -1000,45 +1103,87 @@ Now, let us compare the different models I considered for the semantic search us
 		sentence-t5-base       & 0.53    & \SI{52.3 (0.5)}{\second} & \SI{40.6(9.2)}{\milli\second} \\
 		sentence-t5-base-\dots & 0.48    & \SI{50.8 (0.5)}{\second} & \SI{39.6(1.1)}{\milli\second} \\ \bottomrule
 	\end{tabular}
-	\caption[NDCG Scores]{\label{tab:ndcg}NDCG Scores for different models.}
+	\caption[NDCG Scores for Different Models]{\label{tab:ndcg_models}NDCG Scores for different models.}
 \end{table}
 
-Using all-MiniLM-L6-v2 resulted in a $8.3\times$ speedup in setup delay and a $2.3\times$ speedup in searching delay. The model trained on "code\_search\_net" is noticeably worse than even. This is confirmation that the "code\_search\_net" will not help much in training a good model.
+Using all-MiniLM-L6-v2 resulted in an $8.3\times$ speedup in setup delay and a $2.3\times$ speedup in searching delay. The model trained on CodeSearchNet performs worse. This is because CodeSearchNet provides a text-to-code dataset, and we are evaluating a text-to-text task.
 
 \subsection{Performance of the Different Recipe Datasets}
 
-ranking different recipe datasets (NOTE: do this)
+We can use the same idea to rank the different recipe datasets: the one created from docstrings, the one created from the Pandas cookbook, and the one created from VSCode snippets.
+
+\begin{table}[htb]
+	\centering
+	\begin{tabular}{lrrr}
+		\toprule
+		                       & docstring & cookbook & snippets \\ \midrule
+		NameSearch             &      0.00 &     0.00 &     0.00 \\
+		FuzzySearchName        &      0.41 &     0.45 &     0.53 \\
+		FuzzySearchDescription &      0.27 &     0.31 &     0.48 \\
+		IndexSearch            &      0.22 &     0.40 &     0.29 \\
+		SemanticSearch         &      0.64 &     0.71 &     0.80 \\
+		OpenAIEmbeddings       &      0.57 &     0.44 &     0.88 \\ \bottomrule
+	\end{tabular}
+	\caption[NDCG Scores for Different Datasets]{\label{tab:ndcg_datasets}NDCG Scores for different datasets.}
+\end{table}
+
+The recipes generated with VSCode snippets outperform the other two datasets. However, this table hides how many queries cannot be achieved by any dataset. Let us look at the number of unachievable recipes per dataset and the average number of achieving recipes per successful query.
+
+\begin{table}[htb]
+	\centering
+	\begin{tabular}{lrrr}
+		\toprule
+		                      & docstring & cookbook & snippets \\ \midrule
+		Amount of recipes     &       178 &       29 &       54 \\
+		Nonachievable queries &         6 &       21 &       16 \\
+		Average amount        &      1.09 &     1.13 &     1.77 \\ \bottomrule
+	\end{tabular}
+	\caption[Unachievable Recipes per Dataset]{Unachievable Recipes per Dataset.}
+\end{table}
+
+The datasets with more recipes in total can also cover more queries. The snippets dataset has a higher concentration since it focuses only on common tasks. The docstring dataset is better in a broader set of circumstances, and the snippets dataset is more effective when the user uses common techniques.
+
+\subsection{Comparison to OpenAI Chat Completion}
+
+OpenAI Chat Completion does not use the predefined recipes, meaning that the NDCG cannot be used to rank it. When I searched for all the queries in the test set, it generally only returned correct answers. However, some of the answers did not follow my provided structure and could not be coerced into a RecipeResult. This occurrence could be reduced by writing a better system message.
+
+\subsection{Comparison to ChatGPT}
+
+I used the query: "I am searching for pandas functions that can do the following:" followed by the queries with ChatGPT and mainly got correct answers. The query asking for a Pandas function that can "change a list of data into unique entries" was, however, wrongly interpreted as \mintinline[bgcolor=LightGray]{python}|df['column_name'].unique()| instead of \mintinline[bgcolor=LightGray]{python}|df.explode(column)|. The whole discussion can be found on~\cite{gptchat}.
+
+\subsection{Usefulness of Recipes}
+
+Since both the OpenAI Chat Completion and ChatGPT perform decently on this task, there is the question of whether using my solution is an improvement. I will compare these systems to the semantic search algorithm. When it comes to search delays, semantic search is faster. Accuracy is better with both the Chat Completion and ChatGPT, but the accuracy of semantic search can still be improved by improving the recipes and fine-tuning the semantic search model. Regarding ease of use, my all-in-one solution is more straightforward than using an IDE and a browser for ChatGPT, but the setup time of my solution does decrease its usefulness. Getting rid of all algorithms except semantic search or the web-based algorithm should decrease the setup time substantially and keep it competitive.
+ChatGPT can also provide help with setting up the environment, debugging errors, and correcting itself, which is impossible with semantic search. Competing with such a heavy hitter like OpenAI is not easy, but I do think my approach has merit.
 
 \section{Working With Jupyter Notebooks}
 
+I decided to implement my GUI in Jupyter Notebooks. They are easy to set up and effective at interacting with data. Additionally, the closeness between code and UI should help with learning the Pandas library faster. They also allow for easy sharing of my solution.
+However, there were also some problems with them. Different Websites use different versions of standard Python libraries, which can result in the Notebook behaving differently. For example, at the time of writing, there is an open bug where ipydatagrid does not render on Google Colab~\cite{ipydatagridbug}. Downgrading to version 1.1.16 fixes it, but it is definitely confusing.
 
-
-I decided to implement my solution in Jupyter Notebooks. Notebooks in combination with 
-
-\subsection{Observing the DataFrame}
-
-When we change the DataFrame with either a copied function or, in general, we would like to automatically update the recommender's DataFrame and the data grid. However, this is currently not supported by the widgets library (CITE:https://github.com/bloomberg/ipydatagrid/issues/6).
-
-reflection: no observe on dataframes
-
-outlook: fine-tune, use 
-
-
-(NOTE: copy results from notebook to here)
-
-bad: no observe on dataframes
+Also, Notebooks does not have functionality that full-fledged GUIs offer. When we change the DataFrame with a copied function or, in general, we would like to update the recommender's DataFrame and the data grid automatically. However, this is currently not supported by the widgets library~\cite{widgetsunsupported}.
 
 \chapter{Conclusion}
 
+This chapter concludes the thesis with a summary and possible future work.
+
+\section{Summary}
+
+Of all the tested algorithms, semantic search provides great results regarding accuracy and speed. Lexical search did not provide good accuracy but was still fast.
+Using Jupyter for the GUI was great for prototyping, fast iteration, and its ability to run code cell-by-cell.
+Using recipes together with semantic search is fast, easy to set up, use, and useful. While my approach is not more accurate than current state-of-the-art systems like ChatGPT, it is faster and easier to use. ChatGPT's usefulness for its versatility still means it outperforms my solution, but since the ranking model can still be improved by fine-tuning and the recipes can be further enhanced, I think my approach has merit.
+
 \section{Future Work}\label{futurework}
 
-semantic search + documentation = good combo
-future work: fine tuning and adding NL based on row/ line names
-\cite{wang2021gpl}
-\cite{wang2021tsdae}
-\cite{gao2021simcse}
-porting to vscode
-implementing a more advanced web based algorithm
+This work provides multiple approaches for future work.
+
+\begin{description}
+	\item[Improving the Ranking Strategy] The ranking strategy can be improved by fine-tuning or by using Retrieve and Re-Rank~\cite{retrievererank}, which uses a bi-encoder to retrieve a smaller list of recipes and then a cross-encoder to get more accurate scores on this smaller list.
+	\item[Improving the Recipes] The recipes can see improvements in the quality of their descriptions and the number of recipes.
+	\item[UI] My solution can be ported into a standalone UI or as a plugin for IDEs such as VSCode. The modularity of my system should make this trivial.
+	\item[Other Algorithms] The structure of my solution can be used as a springboard to implement and compare new algorithms.
+\end{description}
+
 
 \printbibliography
 
